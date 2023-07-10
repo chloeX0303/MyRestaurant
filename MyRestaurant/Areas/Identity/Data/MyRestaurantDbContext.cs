@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyRestaurant.Areas.Identity.Data;
+using MyRestaurant.Models;
 
 namespace MyRestaurant.Areas.Identity.Data;
 
@@ -22,6 +23,12 @@ public class MyRestaurantDbContext : IdentityDbContext<MyRestaurantUser>
 
         builder.ApplyConfiguration(new MyRestaurantUserEntityConfiguration());
     }
+
+    public DbSet<MyRestaurant.Models.Customer> Customer { get; set; } = default!;
+
+    public DbSet<MyRestaurant.Models.Food> Food { get; set; } = default!;
+
+    public DbSet<MyRestaurant.Models.Order> Order { get; set; } = default!;
 }
 
 public class MyRestaurantUserEntityConfiguration : IEntityTypeConfiguration<MyRestaurantUser>
