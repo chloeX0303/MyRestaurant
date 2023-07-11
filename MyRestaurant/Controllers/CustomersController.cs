@@ -23,10 +23,7 @@ namespace MyRestaurant.Controllers
         // GET: Customers
         public async Task<IActionResult> Index(string SearchString)
         {
-            // var FirstNameOnly = _context.Customer.Where(c => c.GetType().Equals("FIC"));
-            // return View (FirstNameOnly.ToListAsync());
-
-            //return View(await _context.Customer.ToListAsync());
+            
 
             ViewData["Customer"] = SearchString;
             var customers =from c in _context.Customer
