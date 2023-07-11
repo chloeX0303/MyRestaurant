@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using MyRestaurant.Areas.Identity.Data;
 using MyRestaurant.Models;
@@ -20,12 +21,24 @@ namespace MyRestaurant.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchString)
         {
-              return _context.Customer != null ? 
-                          View(await _context.Customer.ToListAsync()) :
-                          Problem("Entity set 'MyRestaurantDbContext.Customer'  is null.");
+            // var FirstNameOnly = _context.Customer.Where(c => c.GetType().Equals("FIC"));
+            // return View (FirstNameOnly.ToListAsync());
+
+            //return View(await _context.Customer.ToListAsync());
+
+            ViewData["Customer"] = SearchString;
+            var customers =from c in _context.Customer
+                           select c;
+            if(!String.IsNullOrEmpty(SearchString))
+            {
+                customers = customers.Where(c => c.FirstName.Contains(SearchString));
+            }
+            return View(customers);
         }
+        
+
 
         // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)

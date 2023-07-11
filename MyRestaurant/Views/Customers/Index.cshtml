@@ -7,16 +7,21 @@
 
 <h1>Index</h1>
 
+<form asp-action="Index" method="get">
+    <div class="form-group">
+        <label for="SearchString">Search</label>
+        <input type="text" name="SearchString"
+            value="@ViewData["Customer"]" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+</form>
+<a asp-action="Index">Back to full list</a>
+<hr />
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 
-<form asp-controller="Customers" asp-action="Index" method="get">
-    <p>
-        FirstName: <input type="text" name="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
-</form>
+
 
 <table class="table">
     <thead>
