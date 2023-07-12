@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using MyRestaurant.Areas.Identity.Data;
 using MyRestaurant.Models;
@@ -21,9 +22,26 @@ namespace MyRestaurant.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index(string SearchString)
+        public async Task<IActionResult> Index(string SearchString, string sortOrder)
         {
-            
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            var customer = from c in _context.Customer
+                           select c;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    customer = customer.OrderByDescending(s => s.FirstName);
+                    break;
+                default:
+                    customer = customer.OrderBy(s => s.FirstName);
+                    break;
+                
+                   
+            }
+            return View(customer.ToList());
+
+
 
             ViewData["Customer"] = SearchString;
             var customers =from c in _context.Customer

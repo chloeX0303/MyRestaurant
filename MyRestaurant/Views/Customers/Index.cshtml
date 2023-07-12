@@ -7,6 +7,8 @@
 
 <h1>Index</h1>
 
+
+
 <form asp-action="Index" method="get">
     <div class="form-group">
         <label for="SearchString">Search</label>
@@ -24,6 +26,16 @@
 
 
 <table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        
+       
+        
+     
+        <th></th>
+    </tr>
     <thead>
         <tr>
             <th>
