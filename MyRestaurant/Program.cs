@@ -1,18 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication;
 using MyRestaurant.Areas.Identity.Data;
-using MyRestaurant.Handler;
-
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("MyRestaurantDbContextConnection") ?? throw new InvalidOperationException("Connection string 'MyRestaurantDbContextConnection' not found.");
 
 builder.Services.AddDbContext<MyRestaurantDbContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions,BasicAuthenticationHandler> 
-    ("BasicAuthentication", null);
-
-builder.Services.AddDefaultIdentity<MyRestaurantUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<MyRestaurantDbContext>();
+builder.Services.AddDefaultIdentity<MyRestaurantUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<MyRestaurantDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -27,12 +21,12 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
-app.UseAuthentication();
 
 app.UseAuthorization();
 
