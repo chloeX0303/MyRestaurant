@@ -43,7 +43,7 @@ namespace MyRestaurant.Controllers
             }
             return View(customer.ToList());
 
-
+            
 
             ViewData["Customer"] = SearchString;
             var customers =from c in _context.Customer

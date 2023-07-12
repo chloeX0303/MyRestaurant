@@ -246,6 +246,9 @@ namespace MyRestaurant.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CurrentPage")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -262,6 +265,9 @@ namespace MyRestaurant.Migrations
                         .IsRequired()
                         .HasMaxLength(11)
                         .HasColumnType("nvarchar(11)");
+
+                    b.Property<int>("TotalPagesv")
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
@@ -281,7 +287,7 @@ namespace MyRestaurant.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("FoodPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
