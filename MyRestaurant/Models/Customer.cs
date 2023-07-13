@@ -15,8 +15,6 @@ namespace MyRestaurant.Models
         public string PhoneNumber { get; set; }
         [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Email is not valid.")]
         public string Email { get; set; }
-        public int CurrentPage { get; set; }
-        public int TotalPagesv { get; set; }
         public ICollection<Order> Orders { get; set; }
     }
 }
