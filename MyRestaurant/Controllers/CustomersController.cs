@@ -26,33 +26,19 @@ namespace MyRestaurant.Controllers
         // GET: Customers
         public async Task<IActionResult> Index(string SearchString, string sortOrder)
         {
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-
-            var customer = from c in _context.Customer
-                           select c;
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    customer = customer.OrderByDescending(s => s.FirstName);
-                    break;
-                default:
-                    customer = customer.OrderBy(s => s.FirstName);
-                    break;
-                
-                   
-            }
-            return View(customer.ToList());
+            
 
            
+           
 
-            ViewData["Customer"] = SearchString;
+          
             var customers =from c in _context.Customer
                            select c;
             if(!String.IsNullOrEmpty(SearchString))
             {
-                customers = customers.Where(c => c.FirstName.Contains(SearchString));
+                customers = customers.Where(s => s.FirstName!.Contains(SearchString));
             }
-            return View(customers);
+            return View(await customers.ToListAsync());
         }
         
 
