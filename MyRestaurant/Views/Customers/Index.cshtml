@@ -24,11 +24,14 @@
 </form>
 
 <table class="table">
-
+  
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
+            <th>
+                    @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LastName)
