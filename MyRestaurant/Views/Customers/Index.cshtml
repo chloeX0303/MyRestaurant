@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Customer</h1>
 
 
 
@@ -33,9 +33,7 @@
                     @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm })
             </th>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Address)
             </th>
