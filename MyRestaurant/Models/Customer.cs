@@ -22,7 +22,7 @@ namespace MyRestaurant.Models
         [StringLength(50, ErrorMessage = "Do not enter more than 50 characters")]
         [Required(ErrorMessage = "Please enter your home address.")]
         [RegularExpression(@"^(?:[a-zA-Z0-9]+\s?)+[a-zA-Z0-9]+$", ErrorMessage = "Street Address not valid.")]
-        [Range(0, int.MaxValue, ErrorMessage = "Please enter valid integer Number")]
+        
         public string Address { get; set; }
         [Display(Name = "Phone Number")]
         [MaxLength(11)]
