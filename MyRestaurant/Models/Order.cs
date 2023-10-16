@@ -21,7 +21,7 @@ namespace MyRestaurant.Models
         [Display(Name = "Pickup Time")]
         [DataType(DataType.Time)]
         [Required(ErrorMessage = "Please enter the time.")]
-        [GreaterThan("OrderTime")]
+        
         public DateTime PickupTime { get; set; }
         [Required(ErrorMessage = "Please enter customerID.")]
         public int CustomerID { get; set; }
