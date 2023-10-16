@@ -21,7 +21,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+DateTime date = DateTime.Now;
 
+DateTime dateTime = DateTime.Now;
+
+DateOnly dateOnly = DateOnly.FromDateTime(DateTime.Now);
+TimeOnly timeOnly = TimeOnly.FromDateTime(DateTime.Now);
+
+Console.WriteLine(dateTime);
+Console.WriteLine(timeOnly);
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

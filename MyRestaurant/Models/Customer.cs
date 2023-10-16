@@ -36,5 +36,6 @@ namespace MyRestaurant.Models
         [Required(ErrorMessage = "Please enter your email.")]
         public string Email { get; set; }
         public ICollection<Order> Orders { get; set; }
+        
     }
 }
