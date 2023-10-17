@@ -4,7 +4,8 @@ using System.ComponentModel.DataAnnotations;
 namespace MyRestaurant.Models
 {
     public class Customer
-    {
+    {   
+        //ID is the primary key
         public int ID { get; set; }
         [Display(Name = "First Name")]
         [StringLength(50, ErrorMessage = "Do not enter more than 50 characters")]

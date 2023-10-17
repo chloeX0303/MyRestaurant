@@ -6,6 +6,7 @@ namespace MyRestaurant.Models
 {
     public class Food
     {
+        //ID is the primary key
         public int ID { get; set; }
         [Display(Name = "Foods Name")]
         [Required(ErrorMessage = "Please enter the name.")]
@@ -18,7 +19,7 @@ namespace MyRestaurant.Models
         [Required(ErrorMessage = "Please enter the price.")]
        
         [Range(0, 20, ErrorMessage = "Please enter valid integer Number")]
-        
+        //you cannot use string with the decimal datatype
         public decimal FoodPrice { get; set; }
         [Required(ErrorMessage = "Please enter the quantity.")]
         [StringLength(2, ErrorMessage = "Do not enter more than 2 characters")]

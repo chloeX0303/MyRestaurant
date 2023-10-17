@@ -5,7 +5,7 @@ namespace MyRestaurant.Models
 {
     public class Order
     {
-
+        //OrderID is the primary key
         public int OrderID { get; set; }
         [Display(Name = "Order Date")]
         
@@ -27,7 +27,7 @@ namespace MyRestaurant.Models
         public int CustomerID { get; set; }
         [Required(ErrorMessage = "Please enter foodId.")]
         public int FoodID { get; set; }
-
+        //FoodID and CustomerID are a foreign keys
         public Customer Customer { get; set; }
         public Food Food { get; set; }
     }
