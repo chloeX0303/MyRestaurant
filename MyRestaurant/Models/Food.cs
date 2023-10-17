@@ -16,9 +16,9 @@ namespace MyRestaurant.Models
         [Display(Name = "Food Price")]
         [Column(TypeName = "decimal(18, 2)")]
         [Required(ErrorMessage = "Please enter the price.")]
-        [StringLength(4, ErrorMessage = "Do not enter more than 4 characters")]
+       
         [Range(0, 20, ErrorMessage = "Please enter valid integer Number")]
-        [MaxLength(4)]
+        
         public decimal FoodPrice { get; set; }
         [Required(ErrorMessage = "Please enter the quantity.")]
         [StringLength(2, ErrorMessage = "Do not enter more than 2 characters")]
